@@ -1,0 +1,26 @@
+name: adv-tgd
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pytorch
+  - torchvision
+  - pytorch-cuda=12.1
+  - pandas
+  - pyyaml
+  - pip
+  - pip:
+      - diffusers
+      - transformers
+      - peft
+      - accelerate
+      - face-alignment
+      - opencv-python
+      - lpips
+      - open-clip-torch
+      - tqdm
+      - insightface
+      - onnxruntime-gpu
