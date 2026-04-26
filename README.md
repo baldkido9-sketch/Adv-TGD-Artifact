@@ -4,6 +4,26 @@ Official implementation of **Adv-TGD**, a generative adversarial framework that 
 
 ---
 
+## 📥 Datasets and Pre-trained Weights
+
+To evaluate the artifacts and reproduce the pipeline, the following datasets, generative models, and evaluation models are required.
+
+### Datasets
+All experiments utilize the publicly available **CelebA-HQ** and **FFHQ** datasets. You can refer to [CelebAMask-HQ](https://github.com/switchablenorms/CelebAMask-HQ) for CelebA-HQ download.
+1. Download the datasets from their standard academic distribution sources.
+2. Extract the data and place the specific source and target images into the corresponding directories prior to execution:
+   * `celeba-hq_sample/src/`
+   * `celeba-hq_sample/target/`
+
+### Generative Model Weights
+* **Base Models:** The framework automatically fetches generative backbones from HuggingFace (e.g., `stabilityai/stable-diffusion-2-1`). 
+### Face Recognition (FR) Surrogate Weights
+To evaluate the Attack Success Rate (ASR) and reproduce the loss guidance, pre-trained FR models are required. 
+* The framework utilizes **IR152**, **IRSE50**, **MobileFace**, and **FaceNet** as the surrogate ensemble and evaluation models.
+* These pre-trained weights can be downloaded from the public repository of prior work: [kopperx/Adv-Diffusion](https://github.com/kopperx/Adv-Diffusion). google drive link [here](https://drive.google.com/file/d/1Vuek5-YTZlYGoeoqyM5DlvnaXMeii4O8/view).
+* Once downloaded, place the FR weights in the `pretrained_model` directory.
+---
+
 ## 🛠 Environment Setup
 
 We recommend using a Conda environment for consistent dependency management.
@@ -38,20 +58,7 @@ pip install face_alignment opencv-python lpips open_clip_torch pandas tqdm insig
 
 ## 🚀 Usage
 
-### 1. Model Preparation
-
-The framework automatically fetches generative backbones from HuggingFace (e.g., `stabilityai/stable-diffusion-2-1`).
-For offline environments, ensure weights are pre-cached and:
-
-```python
-os.environ["HF_HUB_OFFLINE"] = "1"
-```
-
-is set in `main.py`.
-
----
-
-### 2. Running the Primary Attack
+### 1. Running the Primary Attack
 
 To execute the Adv-TGD pipeline using the proposed SGSM method:
 
@@ -61,7 +68,7 @@ python main.py
 
 ---
 
-### 3. Reproducing Ablation Studies (Table 3)
+### 2. Reproducing Ablation Studies (Table 3)
 
 To run the full suite of masking variants (Saliency-Only, Parsing-Only, Full-Image, and SGSM):
 

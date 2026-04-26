@@ -1,5 +1,5 @@
 import os, copy, random, json, cv2, shutil, re, glob, argparse
-os.environ["HF_HUB_OFFLINE"] = '1'
+os.environ["HF_HUB_OFFLINE"] = '0'
 
 import numpy as np
 import torch
